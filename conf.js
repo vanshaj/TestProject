@@ -3,7 +3,7 @@ exports.config = {
     framework: 'jasmine',
     //seleniumAddress: 'http://localhost:4444/wd/hub',
     defaultTimeoutInterval: 5000,
-    allScriptsTimeout: 5000,
+    allScriptsTimeout: 10000,
     specs: ['./tests/functional/OrderItem.js'],
     capabilities: {
         // chromeOptions: {
