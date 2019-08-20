@@ -11,7 +11,8 @@ itemsListPage.prototype = Object.create({},{
     },
     clickItemElement: {
         value: function(){
-            this.itemElement.click();
+            webHelper.click(this.itemElement);
+            // this.itemElement.click();
         }
     }
 });

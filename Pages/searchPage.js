@@ -15,12 +15,12 @@ searchPage.prototype = Object.create({},{
     },
     typeInSearchBoxElement: {
         value: function(item){
-            this.searchBoxElement.sendKeys(item);
+           webHelper.sendKeys( this.searchBoxElement,item);
         }
     },
     clickOnSearchButton: {
         value: function(){
-            this.searchButtonElement.click();
+            webHelper.click(this.searchButtonElement);
         }
     },
     clearSearchBoxElement: {

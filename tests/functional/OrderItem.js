@@ -5,23 +5,33 @@ loadedModuleObject.loadFiles();
 var EC = protractor.ExpectedConditions;
 
 describe('Order Kindle E-Reader',function(){
-    it('Search Item', function(){
+    it('Login to the application',()=>{
         browser.ignoreSynchronization=true;
         browser.waitForAngularEnabled(false);
         browser.get('https://www.amazon.in/').then(()=>{
             browser.driver.manage().window().maximize();
+            loginPage.clickSignInSecurely();
+            loginPage.enterEmail();
+            loginPage.clickContinueButton();
+            loginPage.enterPassword();
+            loginPage.clickLoginButton();
+        });
+    });
+
+    it('Search Item', function(){
             searchPage.typeInSearchBoxElement('Amazon Kindle');
           //  searchPage.clearSearchBoxElement();
             searchPage.clickOnSearchButton();
-        });
     });
 
     it('Click on the item',function(){
             var toFind = itemsListPage.itemElement;
-            var isVisible = EC.visibilityOf(toFind);
-            browser.wait(isVisible,2000,'Waiting to click on the item');
+            var isVisible = webHelper.ECVisibilityOf(toFind,'Waiting to click on the item');
+            //browser.wait(isVisible,2000,'Waiting to click on the item');
             itemsListPage.clickItemElement();
     });
+
+    
 
     it('Select Quantity of the item', function(){
         browser.getAllWindowHandles().then((handles)=>{

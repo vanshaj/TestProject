@@ -19,12 +19,12 @@ itemsPage.prototype = Object.create({},{
     },
     clickOnAddToCart: {
         get: function(){
-            this.addTocartItem.click();
+            webHelper.click(this.addTocartItem);
         }
     },
     setQuantityOfItem: {
         value: function(quantity){
-            this.quantityItem.click();
+            webHelper.click(this.quantityItem);
             element(by.xpath(`//select[@name='quantity']/option[@value='${quantity}']`)).click();
         }
     }

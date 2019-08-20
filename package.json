@@ -5,7 +5,8 @@
   "main": "app.js",
   "dependencies": {
     "jasmine-reporters": "^1.1.0",
-    "protractor-beautiful-reporter": "^1.2.8"
+    "protractor-beautiful-reporter": "^1.2.8",
+    "simple-crypto-js": "^2.2.0"
   },
   "devDependencies": {
     "grunt": "^1.0.4",
