@@ -4,6 +4,17 @@ loadedModuleObject.loadFiles();
 
 var EC = protractor.ExpectedConditions;
 
+
+    // at the top of the test spec:
+    var fs = require('fs');
+ 
+    // abstract writing screen shot to a file
+    function writeScreenShot(data, filename) {
+        var stream = fs.createWriteStream(filename);
+        stream.write(new Buffer(data, 'base64'));
+        stream.end();
+    }
+
 describe('Order Kindle E-Reader',function(){
     it('Login to the application',()=>{
         browser.ignoreSynchronization=true;
@@ -12,6 +23,9 @@ describe('Order Kindle E-Reader',function(){
             browser.driver.manage().window().maximize();
             loginPage.clickSignInSecurely();
             loginPage.enterEmail();
+            browser.takeScreenshot().then((png) =>{
+                writeScreenShot(png,'C:/codeJs/protractor/Reports/Screenshots/1.png')
+            });
             loginPage.clickContinueButton();
             loginPage.enterPassword();
             loginPage.clickLoginButton();
@@ -31,7 +45,7 @@ describe('Order Kindle E-Reader',function(){
             itemsListPage.clickItemElement();
     });
 
-    
+
 
     it('Select Quantity of the item', function(){
         browser.getAllWindowHandles().then((handles)=>{
